@@ -4,11 +4,9 @@ const shoppingCartSchema = new Schema(
     {
         price: {
             type: Number,
-            required: true,
         },
         quantify: {
             type: Number,
-            required: true,
         },
         products:[
             {
