@@ -7,6 +7,10 @@ const router = Router();
 
 const upload = multer({ dest: "uploads/" });
 
+// Para esta ruta es necesario poner el id del producto exacto que queremos editar. "id".
+// Siga correctamente el path para que no arroje errores el servidor.
+// la diferencia entre esta ruta y la ruta de put_product es que esta se añade la imagen con cloudinary.
+
 router.put("/product/image/:id", upload.single("image"), async (req, res) => {
   try {
     const { id } = req.params;

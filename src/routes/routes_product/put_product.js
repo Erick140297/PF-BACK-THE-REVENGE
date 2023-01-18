@@ -2,6 +2,9 @@ const { Router } = require("express");
 const Product = require("../../models/product");
 const router = Router();
 
+// Para esta ruta es necesario poner el id del producto exacto que queremos eliminar. "id".
+// Siga correctamente el path para que no arroje errores el servidor.
+
 router.put("/product/:id", async (req, res) => {
   try {
     const { id } = req.params 

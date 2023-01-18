@@ -2,6 +2,9 @@ const { Router } = require("express");
 const router = Router();
 const User = require("../../models/user");
 
+// Para esta ruta es necesario poner el id del usuario exacto que queremos eliminar. "id".
+// Siga correctamente el path para que no arroje errores el servidor.
+
 router.delete('/user/:id', async (req, res) => {
     try {
         const {id} = req.params;
