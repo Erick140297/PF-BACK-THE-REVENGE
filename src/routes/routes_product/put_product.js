@@ -5,7 +5,7 @@ const router = Router();
 router.put("/product/:id", async (req, res) => {
   try {
     const { id } = req.params 
-    await Product.findByIdAndUpdate(id, req.body)
+    const product = await Product.findByIdAndUpdate(id, req.body)
     const productUpdated = await Product.findById(id)
     res.status(200).json(productUpdated);
   } catch (error) {

@@ -2,7 +2,7 @@ const { Router } = require("express");
 const multer = require("multer");
 const fs = require("fs-extra");
 const Product = require("../../models/product");
-const { uploadImage } = require("../../utils/cloudinary");
+const { uploadImage, deleteImage } = require("../../utils/cloudinary");
 const router = Router();
 
 const upload = multer({ dest: "uploads/" });
@@ -12,8 +12,9 @@ router.put("/product/image/:id", upload.single("image"), async (req, res) => {
     const { id } = req.params;
 
     const product = await Product.findById(id);
+    const public_id = product.image.public_id
+    await deleteImage(public_id)
 
-    console.log(req.file.fieldname);
     if (req.file.fieldname) {
       const result = await uploadImage(req.file.path);
       product.image = {
