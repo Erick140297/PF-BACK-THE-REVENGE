@@ -7,6 +7,9 @@ const router = Router();
 
 const upload = multer({ dest: "uploads/" });
 
+// Para esta ruta es necesario pasarle a Mongo estos valores "name", "price", "brand", "description", "stock", "category", del producto exacto que queremos crear.
+// Siga correctamente el path para que no arroje errores el servidor.
+
 router.post("/product", upload.single("image"), async (req, res) => {
   try {
     const { name, price, brand, description, stock, category } = req.body;

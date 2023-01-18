@@ -2,12 +2,12 @@ const { Schema, model } = require("mongoose");
 
 const shoppingCartSchema = new Schema(
     {
-        price: {
+        /* price: {
             type: Number,
         },
         quantify: {
             type: Number,
-        },
+        }, */
         products:[
             {
                 type: Schema.Types.ObjectId,

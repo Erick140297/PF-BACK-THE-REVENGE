@@ -2,6 +2,9 @@ const { Router } = require("express");
 const router = Router();
 const User = require("../../models/user");
 
+// Para esta ruta es necesario poner el "email" y "name" del usuario exacto que queremos crear.
+// Para tener encuenta que estos dos valores se enviarán por el body del documento.
+
 router.post("/user", async (req, res) => {
     try {
         const {email, name} = req.body

@@ -2,6 +2,9 @@ const { Router } = require("express");
 const router = Router();
 const PurchaseOrder = require("../../models/purchaseOrder");
 
+// Para esta ruta es necesario poner el id del usuario exacto que queremos editar. "id".
+// Siga correctamente el path para que no arroje errores el servidor.
+
 router.put("/order/:id", async (req, res) => {
   try {
     const { id } = req.params
