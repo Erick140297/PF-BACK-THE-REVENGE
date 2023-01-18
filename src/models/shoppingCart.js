@@ -25,6 +25,6 @@ const shoppingCartSchema = new Schema(
 }
 );
 
-const shoppingCart = model("ShoppingCart", shoppingCartSchema);
+const ShoppingCart = model("ShoppingCart", shoppingCartSchema);
 
-module.exports = shoppingCart;
+module.exports = ShoppingCart;
