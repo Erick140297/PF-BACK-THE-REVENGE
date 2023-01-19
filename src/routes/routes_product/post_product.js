@@ -12,7 +12,7 @@ const upload = multer({ dest: "uploads/" });
 
 router.post("/product", upload.single("image"), async (req, res) => {
   try {
-    const { name, price, brand, description, stock, category } = req.body;
+    const { name, price, brand, description, stock, category, subCategory } = req.body;
 
     const product = new Product({
       name,
@@ -21,6 +21,7 @@ router.post("/product", upload.single("image"), async (req, res) => {
       description,
       stock,
       category,
+      subCategory
     });
 
     if (req.file.fieldname) {
