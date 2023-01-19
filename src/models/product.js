@@ -21,6 +21,7 @@ const productSchema = new Schema(
     image:Object,
     stock:Number,
     category:String,
+    subCategory:String,
     review:Array,
     rating:Array,
   },
