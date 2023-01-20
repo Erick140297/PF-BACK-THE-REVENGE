@@ -15,7 +15,7 @@ router.get("/products", async (req, res) => {
       return;
     } else if (name === undefined && subCategory !== undefined) {
       const products = await Product.find({
-        name: { $regex: subCategory, $options: "i" },
+        subCategory: { $regex: subCategory, $options: "i" },
       });
       res.status(200).json(products);
       return;
