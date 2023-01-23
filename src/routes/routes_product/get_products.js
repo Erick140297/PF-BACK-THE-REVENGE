@@ -6,16 +6,34 @@ const router = Router();
 
 router.get("/products", async (req, res) => {
   try {
-    const { name, subcategory } = req.query;
-    if (name !== undefined && subcategory === undefined) {
+    const { name, subcategory, category } = req.query;
+    if (
+      name !== undefined &&
+      subcategory === undefined &&
+      category == undefined
+    ) {
       const products = await Product.find({
         name: { $regex: name, $options: "i" },
       });
       res.status(200).json(products);
       return;
-    } else if (name === undefined && subcategory !== undefined) {
+    } else if (
+      name === undefined &&
+      subcategory !== undefined &&
+      category === undefined
+    ) {
       const products = await Product.find({
         subCategory: { $regex: subcategory, $options: "i" },
+      });
+      res.status(200).json(products);
+      return;
+    } else if (
+      name === undefined &&
+      subcategory === undefined &&
+      category !== undefined
+    ) {
+      const products = await Product.find({
+        category: { $regex: category, $options: "i" },
       });
       res.status(200).json(products);
       return;
