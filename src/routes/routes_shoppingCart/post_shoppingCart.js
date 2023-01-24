@@ -3,19 +3,19 @@ const router = Router();
 const User = require("../../models/user");
 const ShoppingCart = require("../../models/shoppingCart");
 
-// Para lograr crear nuevos productos en un carrito es necesario que envies SI O SI "productsId" y "userId".
+// Para lograr crear nuevos productos en un carrito es necesario que envies SI O SI "productId" y "userId".
 // Estos dos permiten que ser cree un carrito en el modelo user (si no existe un carrito ya creado crea uno nuevo) y añadir ..
 // nuevos productos si es el caso. :)
 
 router.post("/shoppingCart", async (req, res) => {
     try {
-        const {productsId, userId} = req.body
+        const {productId, userId} = req.body
         let user = await User.findById(userId);
-        console.log(productsId);
+        console.log(productId);
         console.log(userId);
         if(user.cart.length === 0) {
             const newCart = new ShoppingCart({
-                products: productsId,
+                items: [{product: productId}],
                 user: user._id
             });
 
@@ -25,7 +25,7 @@ router.post("/shoppingCart", async (req, res) => {
             res.status(200).json(saveCart);
         } else {
             let cart = await ShoppingCart.findById(user.cart[0]);
-            cart.products = cart.products.concat(productsId);
+            cart.items = cart.items.concat([{product: productId}]);
             const saveCart = await cart.save();
             res.status(200).json(saveCart);
         }

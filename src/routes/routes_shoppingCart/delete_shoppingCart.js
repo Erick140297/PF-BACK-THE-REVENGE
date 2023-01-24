@@ -6,27 +6,28 @@ const User = require("../../models/user");
 // Para que funcione esta ruta es necesario mandar "productId" y "cartId" que ambos son de tipo String para que funcione la ruta
 // Si solo se envia "cartId" se va a vaciar todo el carrito.
 
-router.delete('/shoppingCart', async (req, res) => {
+router.delete("/shoppingCart", async (req, res) => {
     try {
-        const {productId, cartId} = req.body;
-        if(productId === undefined) {
-            const cart = await ShoppingCart.findById(cartId);
-            cart.products = [];
-            const cleanCart = await cart.save();
-
-            res.status(200).json({ message: "cart was successfully cleaned", cleanCart });
+        // Obtener el id del carrito y el id del producto a partir de la ruta
+        const { cartId, productId } = req.body;
+        // Buscar el carrito en la base de datos
+        const cart = await ShoppingCart.findById(cartId);
+        // Verificar si el productId es undefined
+        if (productId === undefined) {
+            // Asignar el arreglo items como un arreglo vacío
+            cart.items = [];
         } else {
-            const cart = await ShoppingCart.findById(cartId);
-            let newProducts = cart.products.filter((e) => e != productId);
-            cart.products = newProducts;
-            const savedCart = await cart.save();
-
-            res.status(200).json({ message: "Product was successfully removed", savedCart });
+            // Eliminar el item del arreglo de items
+            cart.items = cart.items.filter(item => item.product.toString() !== productId);
         }
+        // Guardar el carrito actualizado en la base de datos
+        const updatedCart = await cart.save();
+        res.status(200).json(updatedCart);
     } catch (error) {
-        res.status(500).json({ message: 'Something went wrong!' });
+        res.status(404).json(error);
     }
 });
+
 
 module.exports = router;
 

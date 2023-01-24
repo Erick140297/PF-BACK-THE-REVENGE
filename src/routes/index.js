@@ -27,10 +27,12 @@ router.use(delete_user);
 const post_shoppingCart = require("./routes_shoppingCart/post_shoppingCart");
 const get_shoppingCart = require("./routes_shoppingCart/get_shoppingCart");
 const delete_shoppingCart = require("./routes_shoppingCart/delete_shoppingCart");
+const put_shoppingCart = require("./routes_shoppingCart/put_shoppingCart");
 
 router.use(post_shoppingCart);
 router.use(get_shoppingCart);
 router.use(delete_shoppingCart);
+router.use(put_shoppingCart);
 
 //PurchaseOrder_Routes
 const post_purchaseOrder = require("./routes_purchaseOrder/post_purchaseOrder");

@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/shoppingCart/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const cart = await ShoppingCart.findById(id).populate("products");
+        const cart = await ShoppingCart.findById(id).populate("items.product");
         res.status(200).json({ cart });  
     } catch (error) {
         res.status(404).json(error);
