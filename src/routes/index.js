@@ -62,4 +62,10 @@ router.use(put_product)
 router.use(put_productImage)
 router.use(delete_product)
 
+//Payment
+const paymentRoutes = require("./payment/payment.routes");
+
+router.use(paymentRoutes);
+
+
 module.exports = router;
