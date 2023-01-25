@@ -7,10 +7,10 @@ const router = express.Router();
 // Para esta ruta es necesario poner el id del carrito exacto que queremos ver. "id"
 // Verificar siempre la ruta a la que nos dirigimos y respetar la barrita --> "/" después de un "/shoppingCart" para que logre funcionar correctamente.
 
-router.get("/shoppingCart/:id", async (req, res) => {
+router.get("/shoppingCart/:email", async (req, res) => {
   try {
-    const { id } = req.params;
-    const user = await User.findById(id);
+    const { email } = req.params;
+    const user = await User.findOne({email});
     if (user.cart.length === 0) {
       res.status(200).json({ message: "Tu carrito esta vácio" });
     } else {
