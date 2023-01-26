@@ -54,6 +54,7 @@ const get_productById = require("../routes/routes_product/get_productById")
 const put_product = require("../routes/routes_product/put_product")
 const put_productImage = require("../routes/routes_product/put_productImage")
 const delete_product = require("../routes/routes_product/delete_product")
+// const update_products = require("../routes/routes_product/update_products")
 
 router.use(post_product)
 router.use(get_products)
@@ -61,6 +62,7 @@ router.use(get_productById)
 router.use(put_product)
 router.use(put_productImage)
 router.use(delete_product)
+// router.use(update_products)
 
 //Payment
 const paymentRoutes = require("./payment/payment.routes");
