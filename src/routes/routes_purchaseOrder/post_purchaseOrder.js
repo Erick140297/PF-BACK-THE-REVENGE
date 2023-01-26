@@ -7,15 +7,16 @@ const User = require("../../models/user");
 
 router.post("/order", async (req, res) => {
   try {
-    const { email, cart } = req.body;
+    const { email, cart, total } = req.body;
     const user = await User.findOne({ email });
 
     const newOrder = await PurchaseOrder.create({
       cart,
       user: user._id,
+      total,
     });
     const savedOrder = await newOrder.save();
-    user.orders = user.orders.concat(savedOrder._id)
+    user.orders = user.orders.concat(savedOrder._id);
     user.save();
     res.status(200).json(savedOrder._id);
   } catch (error) {

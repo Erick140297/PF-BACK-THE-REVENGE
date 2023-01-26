@@ -8,8 +8,9 @@ const PurchaseOrder = require("../../models/purchaseOrder");
 router.put("/order/:id", async (req, res) => {
   try {
     const { id } = req.params
+    console.log(id, req.body)
     await PurchaseOrder.findByIdAndUpdate(id, req.body);
-    const order= await PurchaseOrder.findById(id)
+    const order = await PurchaseOrder.findById(id)
     res.status(200).json(order);
   } catch (error) {
     res.status(400).json(error);

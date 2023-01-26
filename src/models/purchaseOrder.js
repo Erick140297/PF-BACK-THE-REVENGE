@@ -11,6 +11,12 @@ const purchaseOrderSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    status: {
+      type: String,
+      enum: ['pendiente', 'pagado', 'enviado', 'entregado', 'cancelado'],
+      default: 'pendiente'
+    },
+    total:Number
   },
   {
     timestamps: false,
