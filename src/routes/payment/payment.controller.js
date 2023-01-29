@@ -1,16 +1,18 @@
 const axios = require("axios");
 
-// require('dotenv').config();
-// const api = process.env.PAYPAL_API
-// const apiClient = process.env.PAYPAL_API_CLIENT
-// const apiSecret = process.env.PAYPAL_API_SECRET
+// const URL_BACK = "http://localhost:3001"
+const URL_BACK = "https://pf-back-the-revenge-production.up.railway.app"
+
+// const URL_FRONT = "http://127.0.0.1:5173"
+const URL_FRONT = "https://pf-front-the-revenge-h8gg.vercel.app"
+
+
 const api = "https://api-m.sandbox.paypal.com"
 const apiClient = "AWKfx6Uu8Kn1EafpDYEN-sX8ZfA5UZSZ8v3WlVioQiguW8WtFRGZPP-_oNlnOMqKjW0zUdriWOWr21JN"
 const apiSecret = "EDNYEGG-2pDQDyGS2kkVd4pXHC3QdvnoZzEHVl9R4mdPbKho__A-c38alhbGZhpPPLrmKzJSZWAWXcLy"
 
 const createOrder = async (req, res) => {
     try {
-        //Doc:  https://developer.paypal.com/docs/api/orders/v2/
         const { value, description } = req.body;
         const order = {
             intent: "CAPTURE",
@@ -27,8 +29,8 @@ const createOrder = async (req, res) => {
                 brand_name: "Galaxia Tech",
                 landing_page: "LOGIN", // LOGIN/BILLING/NO_PREFERENCE
                 user_action: "PAY_NOW",
-                return_url: "http://localhost:3001/capture-order",
-                cancel_url: "http://localhost:3001/cancel-order"
+                return_url: `${URL_BACK}/capture-order`,
+                cancel_url: `${URL_BACK}/cancel-order`
             }
         }
 
@@ -88,11 +90,11 @@ const captureOrder = async (req, res) => {
     //     userMail
     // });
 
-    return res.redirect("http://127.0.0.1:5173/payment");
+    return res.redirect(`${URL_FRONT}/payment`);
 }
 
 const cancelOrder = (req, res) => {
-    res.redirect("http://127.0.0.1:5173/decline")
+    res.redirect(`${URL_FRONT}/decline`)
 }
 
 module.exports = {
