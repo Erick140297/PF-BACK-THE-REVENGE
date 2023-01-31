@@ -6,12 +6,18 @@ const PurchaseOrder = require("../../models/purchaseOrder");
 
 router.get("/order", async (req, res) => {
   try {
-    const orders = await PurchaseOrder.find();
-    res.status(200).json(orders);
+    const { userId } = req.query;
+
+    if (userId) {
+      const orders = await PurchaseOrder.find({ user: userId });
+      res.status(200).json(orders);
+    } else {
+      const orders = await PurchaseOrder.find();
+      res.status(200).json(orders);
+    }
   } catch (error) {
     res.status(400).json(error);
   }
 });
 
 module.exports = router;
-
