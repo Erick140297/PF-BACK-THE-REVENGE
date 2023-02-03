@@ -41,6 +41,7 @@ const get_purchaseOrderById = require("./routes_purchaseOrder/get_purchaseOrderB
 const put_purchaseOrder = require("./routes_purchaseOrder/put_purchaseOrder")
 const delete_purchaseOrder = require("./routes_purchaseOrder/delete_purchaseOrder")
 const status = require("./routes_purchaseOrder/status")
+const revised = require("./routes_purchaseOrder/revised")
 
 router.use(post_purchaseOrder);
 router.use(get_purchaseOrders);
@@ -48,6 +49,7 @@ router.use(get_purchaseOrderById);
 router.use(put_purchaseOrder);
 router.use(delete_purchaseOrder);
 router.use(status)
+router.use(revised)
 
 //Products_Routes
 const post_product = require("../routes/routes_product/post_product")

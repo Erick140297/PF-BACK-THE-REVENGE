@@ -13,7 +13,6 @@ const purchaseOrderSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ['pendiente', 'pagado', 'enviado', 'entregado', 'cancelado'],
       default: 'pendiente'
     },
     total:Number
