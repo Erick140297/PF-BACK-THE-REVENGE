@@ -59,6 +59,7 @@ const delete_product = require("../routes/routes_product/delete_product")
 // const update_products = require("../routes/routes_product/update_products")
 const stock = require("./routes_product/stock")
 const logic_stock = require("./routes_product/logic_stock")
+const reviews = require("./routes_product/reviews")
 
 router.use(post_product)
 router.use(get_products)
@@ -69,6 +70,7 @@ router.use(delete_product)
 // router.use(update_products)
 router.use(stock)
 router.use(logic_stock)
+router.use(reviews)
 
 
 //Payment
