@@ -1,4 +1,4 @@
-exports.pConfirmation = () =>{
+module.exports.pConfirmation = () =>{
     
     const pConfirmation =
     `<html>

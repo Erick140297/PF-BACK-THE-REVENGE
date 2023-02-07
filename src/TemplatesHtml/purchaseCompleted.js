@@ -1,4 +1,4 @@
-exports.pCompleted = () => {
+module.exports.pCompleted = () => {
   const pCompleted = `
   <html>
     <div class="">

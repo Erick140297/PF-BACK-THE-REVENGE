@@ -1,5 +1,4 @@
-
-exports.welcome = () =>{
+module.exports.welcome = () =>{
     
     const welcome =
     ` <html>

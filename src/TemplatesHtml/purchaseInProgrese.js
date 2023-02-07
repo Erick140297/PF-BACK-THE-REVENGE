@@ -1,4 +1,4 @@
-exports.pInProgress = () =>{
+module.exports.pInProgress = () =>{
     
     const pInProgress =
     `<html>

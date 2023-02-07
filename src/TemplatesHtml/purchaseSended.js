@@ -1,4 +1,4 @@
-exports.pSended = () =>{
+module.exports.pSended = () =>{
     
     const pSended =
     `<html>
