@@ -1,7 +1,4 @@
-module.exports.pSended = () =>{
-    
-    const pSended =
-    `<html>
+const pSended = `<html>
     <div class="">
       <div class="aHl"></div>
       <div id=":pq" tabindex="-1"></div>
@@ -729,6 +726,5 @@ module.exports.pSended = () =>{
         </div>
       </div>
     </div>
-  </html>`
-    return pSended;
-}
+  </html>`;
+module.exports = pSended;

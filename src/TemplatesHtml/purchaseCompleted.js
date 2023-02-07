@@ -1,5 +1,4 @@
-module.exports.pCompleted = () => {
-  const pCompleted = `
+const pCompleted = `
   <html>
     <div class="">
       <div class="aHl"></div>
@@ -731,5 +730,4 @@ module.exports.pCompleted = () => {
     </div>
   </html>`;
 
-  return pCompleted;
-};
+module.exports = pCompleted;

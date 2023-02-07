@@ -1,7 +1,4 @@
-module.exports.pInProgress = () =>{
-    
-    const pInProgress =
-    `<html>
+const pInProgress = `<html>
     <div class="">
       <div class="aHl"></div>
       <div id=":pq" tabindex="-1"></div>
@@ -729,6 +726,5 @@ module.exports.pInProgress = () =>{
         </div>
       </div>
     </div>
-  </html>`
-    return pInProgress;
-}
+  </html>`;
+module.exports = pInProgress;

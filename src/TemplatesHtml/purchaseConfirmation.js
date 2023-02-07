@@ -1,6 +1,4 @@
-module.exports.pConfirmation = () =>{
-    
-    const pConfirmation =
+const pConfirmation =
     `<html>
     <div class="">
       <div class="aHl"></div>
@@ -731,5 +729,5 @@ module.exports.pConfirmation = () =>{
       </div>
     </div>
   </html>`
-    return pConfirmation;
-}
+module.exports = pConfirmation 
+ 
