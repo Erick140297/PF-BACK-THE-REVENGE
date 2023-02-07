@@ -16,8 +16,13 @@ router.get("/products", async (req, res) => {
       const products = await Product.find({
         $or: [{ name: { $regex: searchRegex } }],
       });
-      res.status(200).json(products);
-      return;
+      if (products.length === 0) {
+        res.status(200).json({ message: "No se encontrarón resultados" });
+        return;
+      } else {
+        res.status(200).json(products);
+        return;
+      }
     } else if (
       name === undefined &&
       subcategory !== undefined &&
@@ -43,7 +48,7 @@ router.get("/products", async (req, res) => {
       res.status(200).json(products);
     }
   } catch (error) {
-    res.status(400).json({message:"No se encontrarón resultados"});
+    res.status(400).json({ message: "No se encontrarón resultados" });
   }
 });
 
