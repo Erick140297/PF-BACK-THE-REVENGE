@@ -5,6 +5,7 @@ const sendMail = require("../../utils/nodemailer");
 const pConfirmation = require("../../TemplatesHtml/purchaseConfirmation.js");
 const  pCompleted  = require('../../TemplatesHtml/purchaseCompleted');
 const pSended = require('../../TemplatesHtml/purchaseSended');
+const pInProgress = require("../../TemplatesHtml/purchaseInProgrese")
 // const  pInProgress  = require('../../TemplatesHtml/purchaseInProgrese');
 
 router.post("/order/status/:id", async (req, res) => {
@@ -18,7 +19,7 @@ router.post("/order/status/:id", async (req, res) => {
 
     switch (status) {
         case "pendiente":
-          // contentHtml = pInProgress;
+          contentHtml = pInProgress;
           subject = "Tu pago esta procesandose";
           break;
         case "pagado":
