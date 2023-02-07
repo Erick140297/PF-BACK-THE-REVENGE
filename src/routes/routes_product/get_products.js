@@ -17,7 +17,7 @@ router.get("/products", async (req, res) => {
         $or: [{ name: { $regex: searchRegex } }],
       });
       if (products.length === 0) {
-        res.status(200).json({ message: "No se encontrarón resultados" });
+        res.status(200).json([{ message: "No se encontrarón resultados" }]);
         return;
       } else {
         res.status(200).json(products);
