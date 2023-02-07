@@ -6,7 +6,7 @@ const routes = require('./routes/index.js')
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({ origin: ["http://127.0.0.1:5173", "https://pf-front-the-revenge-h8gg.vercel.app"] }))
 app.use(morgan('dev'))
 app.use(routes)
 
