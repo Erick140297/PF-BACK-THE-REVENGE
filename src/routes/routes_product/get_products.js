@@ -12,8 +12,9 @@ router.get("/products", async (req, res) => {
       subcategory === undefined &&
       category == undefined
     ) {
+      const searchRegex = new RegExp(name, "i");
       const products = await Product.find({
-        name: { $regex: name, $options: "i" },
+        $or: [{ name: { $regex: searchRegex } }],
       });
       res.status(200).json(products);
       return;
@@ -42,7 +43,7 @@ router.get("/products", async (req, res) => {
       res.status(200).json(products);
     }
   } catch (error) {
-    res.status(400).json(error);
+    res.status(400).json({message:"No se encontrarón resultados"});
   }
 });
 
